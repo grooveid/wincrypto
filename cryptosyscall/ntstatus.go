@@ -1,4 +1,4 @@
-package bcrypt
+package cryptosyscall
 
 import "fmt"
 

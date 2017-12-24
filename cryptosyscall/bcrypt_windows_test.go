@@ -1,4 +1,4 @@
-package bcrypt
+package cryptosyscall
 
 import (
 	"fmt"
@@ -24,5 +24,4 @@ func TestBCryptOpenAlgorithmProvider(t *testing.T) {
 
 	status = BCryptCloseAlgorithmProvider(handle, 0)
 	assert.True(t, status.Success())
-
 }

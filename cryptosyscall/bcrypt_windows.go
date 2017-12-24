@@ -1,4 +1,4 @@
-package bcrypt
+package cryptosyscall
 
 type BCRYPT_HANDLE uintptr
 type BCRYPT_ALG_HANDLE BCRYPT_HANDLE
@@ -10,6 +10,8 @@ type BCryptBufferDesc struct {
 	//...
 }
 
+// CNG Algorithm Identifiers
+// ref: https://msdn.microsoft.com/en-us/library/windows/desktop/aa375534(v=vs.85).aspx
 const (
 	BCRYPT_3DES_ALGORITHM              = "3DES"
 	BCRYPT_3DES_112_ALGORITHM          = "3DES_112"
@@ -50,10 +52,56 @@ const (
 	MS_PRIMITIVE_PROVIDER              = "Microsoft Primitive Provider"
 )
 
+// Flags
 const (
 	BCRYPT_ALG_HANDLE_HMAC_FLAG uint32 = 0x00000008
 	BCRYPT_PROV_DISPATCH        uint32 = 0x00000001
 	BCRYPT_HASH_REUSABLE_FLAG   uint32 = 0x00000020
+)
+
+// Cryptography Primitive Property Identifiers
+// ref: https://msdn.microsoft.com/en-us/library/windows/desktop/aa376211(v=vs.85).aspx
+const (
+	BCRYPT_ALGORITHM_NAME        = "AlgorithmName"
+	BCRYPT_AUTH_TAG_LENGTH       = "AuthTagLength"
+	BCRYPT_BLOCK_LENGTH          = "BlockLength"
+	BCRYPT_BLOCK_SIZE_LIST       = "BlockSizeList"
+	BCRYPT_CHAINING_MODE         = "ChainingMode"
+	BCRYPT_DH_PARAMETERS         = "DHParameters"
+	BCRYPT_DSA_PARAMETERS        = "DSAParameters"
+	BCRYPT_EFFECTIVE_KEY_LENGTH  = "EffectiveKeyLength"
+	BCRYPT_HASH_BLOCK_LENGTH     = "HashBlockLength"
+	BCRYPT_HASH_LENGTH           = "HashDigestLength"
+	BCRYPT_HASH_OID_LIST         = "HashOIDList"
+	BCRYPT_INITIALIZATION_VECTOR = "IV"
+	BCRYPT_KEY_LENGTH            = "KeyLength"
+	BCRYPT_KEY_LENGTHS           = "KeyLengths"
+	BCRYPT_KEY_OBJECT_LENGTH     = "KeyObjectLength"
+	BCRYPT_KEY_STRENGTH          = "KeyStrength"
+	BCRYPT_MESSAGE_BLOCK_LENGTH  = "MessageBlockLength"
+	BCRYPT_OBJECT_LENGTH         = "ObjectLength"
+	BCRYPT_PADDING_SCHEMES       = "PaddingSchemes"
+	BCRYPT_PROVIDER_HANDLE       = "ProviderHandle"
+	BCRYPT_SIGNATURE_LENGTH      = "SignatureLength"
+)
+
+// padding schemes
+const (
+	BCRYPT_SUPPORTED_PAD_ROUTER    = 0x00000001
+	BCRYPT_SUPPORTED_PAD_PKCS1_ENC = 0x00000002
+	BCRYPT_SUPPORTED_PAD_PKCS1_SIG = 0x00000004
+	BCRYPT_SUPPORTED_PAD_OAEP      = 0x00000008
+	BCRYPT_SUPPORTED_PAD_PSS       = 0x00000010
+)
+
+// chaining modes
+const (
+	BCRYPT_CHAIN_MODE_CBC = "ChainingModeCBC"
+	BCRYPT_CHAIN_MODE_CCM = "ChainingModeCCM"
+	BCRYPT_CHAIN_MODE_CFB = "ChainingModeCFB"
+	BCRYPT_CHAIN_MODE_ECB = "ChainingModeECB"
+	BCRYPT_CHAIN_MODE_GCM = "ChainingModeGCM"
+	BCRYPT_CHAIN_MODE_NA  = "ChainingModeN/A"
 )
 
 //sys	BCryptOpenAlgorithmProvider(algorithm *BCRYPT_ALG_HANDLE, pszAlgId *uint16, pszImplementation *uint16, flags int32) (s NTSTATUS) = bcrypt.BCryptOpenAlgorithmProvider
