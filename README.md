@@ -1,14 +1,13 @@
 # wincrypto
 
-[![Build status](https://ci.appveyor.com/api/projects/status/github/grooveid/wincrypto?svg=true)](https://ci.appveyor.com/project/crewjam/wincrypto)\
-[![GoDoc](https://godoc.org/github.com/grooveid/wincrypto?status.svg)](https://godoc.org/github.com/grooveid/wincrypto)
+[![Build status](https://ci.appveyor.com/api/projects/status/github/grooveid/wincrypto?svg=true)](https://ci.appveyor.com/project/crewjam/wincrypto) [![GoDoc](https://godoc.org/github.com/grooveid/wincrypto?status.svg)](https://godoc.org/github.com/grooveid/wincrypto)
 
 Go bindings for Windows Cryptographic APIs
 
 The package `cryptosyscall` contains (non-idiomatic) bindings for many (but not all) for the
 API calls in the NCrypt* and BCrypt* suite.
 
-This is one wrapper for the data protection API, which more to come. Contributions welcome.
+So far there is one idiomatic wrapper for the data protection API, with more to come. Contributions welcome.
 
 ```
 package main
@@ -32,7 +31,6 @@ func main() {
     }
     fmt.Printf("plaintext: %s\n", string(plaintext))
 }
-
 ```
 
 ## Security Issues
