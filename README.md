@@ -11,7 +11,13 @@ API calls in the NCrypt* and BCrypt* suite.
 This is one wrapper for the data protection API, which more to come. Contributions welcome.
 
 ```
-import "github.com/grooveid/wincrypto"
+package main
+
+import (
+	"fmt"
+
+	"github.com/grooveid/wincrypto"
+)
 
 func main() {
     ciphertext, err := wincrypto.ProtectSecret([]byte("hunter2"))
@@ -26,6 +32,7 @@ func main() {
     }
     fmt.Printf("plaintext: %s\n", string(plaintext))
 }
+
 ```
 
 ## Security Issues
